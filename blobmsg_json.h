@@ -23,6 +23,7 @@ struct json_object;
 
 bool blobmsg_add_object(struct blob_buf *b, struct json_object *obj);
 bool blobmsg_add_json_element(struct blob_buf *b, const char *name, struct json_object *obj);
+bool blobmsg_add_json_file(struct blob_buf *b,  const char *name, const char *file);
 bool blobmsg_add_json_from_string(struct blob_buf *b, const char *str);
 bool blobmsg_add_json_from_file(struct blob_buf *b, const char *file);
 

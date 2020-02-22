@@ -87,6 +87,22 @@ bool blobmsg_add_json_element(struct blob_buf *b, const char *name, json_object 
 	return ret;
 }
 
+bool blobmsg_add_json_file(struct blob_buf *b,  const char *name, const char *file)
+{
+	struct json_object *obj;
+	bool ret;
+	
+	obj = json_object_from_file(file);
+
+	if (!obj)
+		return false;
+
+	ret = blobmsg_add_json_element(b, name, obj);
+
+	json_object_put(obj);
+	return ret;
+}
+
 static bool __blobmsg_add_json(struct blob_buf *b, json_object *obj)
 {
 	bool ret = false;
